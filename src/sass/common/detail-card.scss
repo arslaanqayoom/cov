@@ -1,0 +1,39 @@
+.oxygen{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    padding-top: 9rem;
+}
+.data-card{
+    &__card{
+  
+        width: 34rem;
+        padding: 1rem;
+        margin: 1rem;
+        background: #8f9df3;
+    }
+    &__header{
+        border-bottom: 1px solid #a05252;
+        color: #f9f9f9;
+        text-align: center;
+        background: #bb4545;
+}
+    &__body{
+        padding: 1rem;
+        background:#4474fd; 
+    }
+    &__text{
+        padding: 0.4rem;
+        color: #fff;
+    }
+    &__desc{
+        display: flex;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+    }
+    &__message-box{
+        border: 1px solid #ca5555;
+        border-radius: 4px;
+        padding: 1rem;
+    }
+}

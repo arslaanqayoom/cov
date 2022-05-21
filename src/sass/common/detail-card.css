@@ -1,0 +1,50 @@
+.oxygen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 9rem;
+}
+
+.data-card__card {
+  width: 34rem;
+  padding: 1rem;
+  margin: 1rem;
+  background: #8f9df3;
+}
+
+.data-card__header {
+  border-bottom: 1px solid #a05252;
+  color: #f9f9f9;
+  text-align: center;
+  background: #bb4545;
+}
+
+.data-card__body {
+  padding: 1rem;
+  background: #4474fd;
+}
+
+.data-card__text {
+  padding: 0.4rem;
+  color: #fff;
+}
+
+.data-card__desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+  padding: 0.2rem;
+}
+
+.data-card__message-box {
+  border: 1px solid #ca5555;
+  border-radius: 4px;
+  padding: 1rem;
+}
+/*# sourceMappingURL=detail-card.css.map */

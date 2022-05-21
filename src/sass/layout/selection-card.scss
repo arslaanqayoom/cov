@@ -1,0 +1,42 @@
+.selection-cards{
+    padding-bottom: 3rem;
+    &__wrapper{
+        display: flex;
+     
+        padding:4rem;
+        margin-top: 3rem;
+
+        @include respond (phone-lg){
+            flex-wrap: wrap;
+        }
+        
+ 
+        a{
+            width: 100%;
+        }}
+        &__header{
+            padding: 2rem 8rem;
+            background: #78b5bf;
+            h1{
+                color: white;
+            }
+        }
+        &__heading{
+            font-size: 2rem;
+            color: #8e3628;
+            font-weight: 700;
+        }
+   
+}
+/* .iOxygen{
+    background-image: url(../../images/oxygen.jpg);
+}
+.iMed{
+    background-image: url(../../images/medicine.jpg);
+}
+.iBed{
+    background-image: url(../../images/bed.jpg);
+}
+.iPlasma{
+    background-image: url(../../images/banner.jpg);
+} */
