@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+const option= [
+    {id:1, name: 'bed'},
+    {id:2, name: 'oxygen'},
+    {id:3, name: 'plasma'},
+    {id:3, name: 'medicine'},]
 function ProvideData() {
 
     const [error, setErr] = useState(false);
     const [submit, setsubmit] = useState(false);
     const [id, setId] = useState(0)
+    const [cheked,setc]=useState([])
     const [data, setData] = useState({
         name: "",
         time: "",
@@ -32,12 +38,14 @@ function ProvideData() {
         //     "dos": new Date().toLocaleDateString(),
         //     "visited": "FALSE"
         // }]
+        for(let i=0; i<=cheked.length; i++){
+            console.log(cheked[i])
         const datas ={
             name:data.name.toString(),
         time: data.time,
         contact:data.contact.toString(),
         location: data.location.toString(),
-        cat: data.cat,
+        cat: cheked[i],
         vrAt:data.vrAt,
         msg: data.msg.toString(),
        dos: new Date().toLocaleDateString(),
@@ -53,13 +61,28 @@ function ProvideData() {
             .catch(error => {
                 console.log(error)
                 setErr(true)
-            })
+            })}
     }
 
     const handleSubmitBtn = (e) => {
         console.log("clicke")
         setId(id + 1);
         
+    }
+    const check = (e)=> {
+        const value = e.target.value
+    console.log(e.target.value,"dsh")
+    if(e.target.checked){
+        let ar =[...cheked]
+        ar.push(e.target.value)
+        setc(ar)
+    }
+    else{let ar =[...cheked]
+     const ab=   ar.filter((i)=>i!== value)
+        setc(ab)
+
+    }
+    console.log(cheked,"dsh")
     }
 
 const onchange =(e)=>{
@@ -81,25 +104,21 @@ const {value , name} = e.target
                         </div>
                         <div className="submit-details__input-sec">
                         <span className="submit-details__label">Catagories</span>
-                            <select name="catagories" id="catagories" className="submit-details__input-field" onChange={handleChange} >
+                            {/* <select name="catagories" id="catagories" className="submit-details__input-field" onChange={handleChange} >
                                 <option disabled={true} defaultValue="select" >select</option>
                                 <option value="oxygen">Oxygen</option>
                                 <option value="bed">Bed</option>
                                 <option value="plasma">Plasma</option>
                                 <option value="medicine">medicine</option>
-                            </select>
-                            {/* <div>
-                            <input onChange={handleChange} type="checkbox" value='oxygen' name='cat' id='o2' />
-                            <label htmlFor='o2'>oxygen</label>
-                            </div>
+                            </select> */}
                             <div>
-                            <input onChange={handleChange} type="checkbox" value='plasma' name='cat' id='plasma' />
-                            <label htmlFor='plasma'>pLASMA</label>
+                            {option.map(({id, name,},index) => {
+                                return <div key={index}>
+                                    <input name={name} type="checkbox" value={name} id={id} onChange={check}/>
+                                    <label htmlFor={id}>{name}</label>
+                                </div>;
+                            })}
                             </div>
-                            <div>
-                            <input onChange={handleChange} type="checkbox" value='bed' name='cat' id='bed' />
-                            <label htmlFor='bed'>Bed</label>
-                            </div> */}
                             
                         </div>
                     </div>
