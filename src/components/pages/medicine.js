@@ -4,27 +4,29 @@ import React, { useEffect, useState} from 'react'
 function OxygenPage() {
     const [medicine, setmedicine] = useState([])
     const [loading , setLoading] = useState(true)
-useEffect(()=>{
-    axios.get('https://v1.nocodeapi.com/hackers/google_sheets/vCgYokGLLGSVQAeE?tabId=sheet1')
-    .then((response) => {
-        console.log("1", response.data.data)
-        const data= response.data.data
+    useEffect(()=>{
+        axios.get('https://contact-form-38965-default-rtdb.firebaseio.com/contactForm-new.json')
+        .then((response) => {
+            
+            const data= response.data
+            console.log(data.data,'data')
+            let arr =[]
+        for (const key of Object.values(data)) {
+            arr.push(key)
+            console.log(key,"vakk");
+            }
+            console.log(arr,'arr')
+            setmedicine(arr)
+        })
+        .finally(() => {
+            setLoading(false);
+        });
         
-/*         const obj = JSON.parse(response.data)
-        console.log(obj,"objn",obj.name); */
-        console.log(data)
-        setmedicine(data)
-    })
-    .finally(() => {
-        setLoading(false);
-    });
-    
-},[]);
-const filteredVisited= medicine.filter((i)=>i.visited==="TRUE");
-console.log("fi", filteredVisited)
-   const medicineFilter  = filteredVisited.filter((i)=>i.catagories==="medicine")
-console.log("ox",medicineFilter)
-
+    },[]);
+    const filteredVisited= medicine.filter((i)=>i.visited==="FALSE");
+    console.log("fi", filteredVisited)
+    const medicineFilter  = filteredVisited.filter((i)=>i.cat==="medicine")
+    console.log("ox",medicineFilter)
     return (
         <div className="oxygen">
         <div className="header">
@@ -42,7 +44,7 @@ console.log("ox",medicineFilter)
                     </div>
                     <div className="data-card__body">
                     <div className="data-card__detail">
-                        <div className="data-card__text"><span className="data-card__desc">Name : <h4>{item.Name}</h4></span></div>
+                        <div className="data-card__text"><span className="data-card__desc">Name : <h4>{item.name}</h4></span></div>
                         <div className="data-card__text"><span className="data-card__desc">location : <h4>{item.location}</h4></span></div>
                         <div className="data-card__text"><span className="data-card__desc">contact:<h4> {item.contact}</h4></span></div>
                          <div className="data-card__text"><span className="data-card__desc">date of submission: <h4>{item.dos}</h4></span></div>
