@@ -4,7 +4,7 @@ const option= [
     {id:1, name: 'bed'},
     {id:2, name: 'oxygen'},
     {id:3, name: 'plasma'},
-    {id:3, name: 'medicine'},]
+    {id:4, name: 'medicine'},]
 function ProvideData() {
 
     const [error, setErr] = useState(false);
