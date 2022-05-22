@@ -5,25 +5,28 @@ function OxygenPage() {
     const [oxygen, setoxygen] = useState([])
     const [loading , setLoading] = useState(true)
 useEffect(()=>{
-    axios.get('https://v1.nocodeapi.com/hackers/google_sheets/vCgYokGLLGSVQAeE?tabId=sheet1')
+    axios.get('https://contact-form-38965-default-rtdb.firebaseio.com/contactForm-new.json')
     .then((response) => {
-        console.log("1", response.data.data)
-        const data= response.data.data
-        console.log(data)
-        setoxygen(data)
-    })
-    .catch((err) => {
-        console.log("errr message",err)
+        
+        const data= response.data
+        console.log(data.data,'data')
+        let arr =[]
+    for (const key of Object.values(data)) {
+        arr.push(key)
+        console.log(key,"vakk");
+        }
+        console.log(arr,'arr')
+        setoxygen(arr)
     })
     .finally(() => {
-        setLoading(false)
-    })
+        setLoading(false);
+    });
     
 },[]);
-const filteredVisited= oxygen.filter((i)=>i.visited==="TRUE");
-console.log("fi", filteredVisited)
-   const oxygenFilter  = filteredVisited.filter((i)=>i.catagories==="oxygen")
-   console.log("ox",oxygenFilter)
+const filteredVisited= oxygen.filter((i)=>i.visited==="FALSE");
+    console.log("fi", filteredVisited)
+    const oxygenFilter  = filteredVisited.filter((i)=>i.cat==="oxygen")
+    console.log("ox",oxygenFilter)
 
     return (
         <div className="oxygen">
@@ -37,7 +40,7 @@ console.log("fi", filteredVisited)
                     </div>
                     <div className="data-card__body">
                     <div className="data-card__detail">
-                        <div className="data-card__text"><span className="data-card__desc">Name : <h4>{item.Name}</h4></span></div>
+                        <div className="data-card__text"><span className="data-card__desc">Name : <h4>{item.name}</h4></span></div>
                         <div className="data-card__text"><span className="data-card__desc">location : <h4>{item.location}</h4></span></div>
                         <div className="data-card__text"><span className="data-card__desc">contact:<h4> {item.contact}</h4></span></div>
                          <div className="data-card__text"><span className="data-card__desc">date of submission: <h4>{item.dos}</h4></span></div>
